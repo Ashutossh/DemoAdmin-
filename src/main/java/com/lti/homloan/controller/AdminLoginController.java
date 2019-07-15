@@ -17,7 +17,7 @@ import com.lti.homloan.service.AdminService;
 public class AdminLoginController {
 	
 	@Autowired
-	private AdminService userService;
+	private AdminService adminService;
 	
 	@GetMapping("/adminLoginForm")
 	public String showFormForAdd(ModelMap theModel) {
@@ -27,9 +27,9 @@ public class AdminLoginController {
 		return "login-admin";
 	}
     
-	@RequestMapping(value = "/loginUser",  method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/loginAdmin",  method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView processLogin(@ModelAttribute Admin theUser) {
-		Admin adm = userService.checkUser(theUser);
+		Admin adm = adminService.checkUser(theUser);
 		ModelAndView model = null;
 		if (adm == null) {
 			model = new ModelAndView("login-admin");

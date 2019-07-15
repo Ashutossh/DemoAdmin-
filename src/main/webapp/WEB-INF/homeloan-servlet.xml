@@ -14,6 +14,7 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+<mvc:annotation-driven />
 	<!-- Add support for component scanning -->
 	<context:component-scan base-package="com.lti.homloan" />
 
@@ -32,7 +33,7 @@
           destroy-method="close">
         <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
         <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-        <property name="user" value="SYSTEM" />
+        <property name="user" value="system" />
         <property name="password" value="delta" /> 
 
         <!-- these are connection pool properties for C3P0 -->
@@ -62,6 +63,7 @@
     
     <!-- Step 4: Enable configuration of transactional behavior based on annotations -->
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
+	
 
 	<!-- Add support for reading web resources: css, images, js, etc ... -->
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>

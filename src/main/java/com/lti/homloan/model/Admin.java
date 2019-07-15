@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="customer")  //Since table is stored in customer and here we are retriving data from table for matching id and password
+@Table(name="adminLogin")  //Since table is stored in customer and here we are retriving data from table for matching id and password
 public class Admin {
 
 	@Column(name="email")
@@ -33,12 +33,9 @@ public class Admin {
 	public String getPassword() {
 		return password;
 	}
-
+	
 	public void setPassword(String password) {
-		Base64.Encoder encoder=Base64.getEncoder();
-		String normalString = password;
-	    String encodedString=encoder.encodeToString(normalString.getBytes(StandardCharsets.UTF_8) );
-		this.password =encodedString;
+		this.password =password;
 	}
 
 	public int getId() {
